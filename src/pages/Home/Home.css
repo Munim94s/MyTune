@@ -1,0 +1,107 @@
+.home-page {
+    /* animation: appear 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; */
+    /* Handled by global animate-appear or similar if added, or keep it here */
+    animation: appear 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+
+.home-page {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-2xl);
+}
+
+.home-hero {
+    text-align: center;
+    padding: var(--spacing-2xl) 0;
+}
+
+.home-hero-content {
+    margin-bottom: var(--spacing-2xl);
+}
+
+.home-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: var(--spacing-md);
+    opacity: 0;
+    animation: appear 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 0.1s;
+}
+
+.home-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+    opacity: 0;
+    animation: appear 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 0.2s;
+}
+
+.home-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-xl);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.feature-card {
+    padding: var(--spacing-xl);
+    text-align: center;
+    /* Animation handled by parent's animate-stagger class */
+}
+
+.feature-icon {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto var(--spacing-lg);
+    background: linear-gradient(135deg, #e13d3d, #b83030);
+    border-radius: var(--border-radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    box-shadow: var(--shadow-glow);
+}
+
+.feature-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+.feature-card p {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.home-cta {
+    text-align: center;
+    padding: var(--spacing-2xl);
+    background: var(--bg-glass);
+    border-radius: var(--border-radius-xl);
+    border: 1px solid var(--border-color);
+}
+
+.home-cta h2 {
+    font-size: 2rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+.home-cta p {
+    font-size: 1.125rem;
+    margin-bottom: var(--spacing-xl);
+}
+
+@media (max-width: 768px) {
+    .home-title {
+        font-size: 2.5rem;
+    }
+
+    .home-subtitle {
+        font-size: 1.125rem;
+    }
+
+    .home-features {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,12 @@
+.youtube-player-container {
+    position: fixed;
+    top: -9999px;
+    left: -9999px;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+#youtube-player {
+    width: 0;
+    height: 0;
+}

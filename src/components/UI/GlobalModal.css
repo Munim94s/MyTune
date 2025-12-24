@@ -1,0 +1,138 @@
+/* GlobalModal.css */
+.global-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    /* backdrop-filter handled by GSAP */
+    backdrop-filter: blur(0px);
+    opacity: 0;
+    transition: none;
+    /* Let GSAP handle animations */
+}
+
+.global-modal-container {
+    background-color: var(--card-bg, #1a1a1a);
+    border: 1px solid var(--border-color, #333);
+    border-radius: 16px;
+    padding: 24px;
+    min-width: 320px;
+    max-width: 90vw;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    /* opacity and transition handled by GSAP */
+    transition: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.global-modal-custom-wrapper {
+    /* opacity handled by GSAP */
+    transition: none;
+}
+
+.global-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.global-modal-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary, #fff);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.global-modal-close {
+    background: none;
+    border: none;
+    color: var(--text-secondary, #aaa);
+    cursor: pointer;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s;
+}
+
+.global-modal-close:hover {
+    color: var(--text-primary, #fff);
+}
+
+.global-modal-body {
+    color: var(--text-secondary, #ccc);
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.global-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.modal-btn {
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+    font-size: 0.95rem;
+}
+
+.modal-btn-cancel {
+    background-color: transparent;
+    border: 1px solid var(--border-color, #444);
+    color: var(--text-primary, #fff);
+}
+
+.modal-btn-cancel:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.modal-btn-confirm,
+.modal-btn-ok {
+    background-color: var(--primary-color, rgb(99, 102, 241));
+    color: white;
+}
+
+.modal-btn-confirm:hover,
+.modal-btn-ok:hover {
+    background-color: var(--primary-hover, rgb(79, 70, 229));
+    transform: translateY(-1px);
+}
+
+.modal-btn-danger {
+    background-color: #ef4444;
+    color: white;
+}
+
+.modal-btn-danger:hover {
+    background-color: #dc2626;
+}
+
+/* Custom Component Container - removes implicit padding if needed or keeps it */
+.global-modal-custom {
+    /* If the custom component handles its own layout (like PlaylistModal), 
+       we might want to strip styles here or keep them consistent. 
+       For now, let's keep the overlay but maybe reset the container for custom?
+       Actually, PlaylistModal has its own modal structure. 
+       If we utilize GlobalModal wrapper, we should probably strip PlaylistModal's own overlay. */
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+}

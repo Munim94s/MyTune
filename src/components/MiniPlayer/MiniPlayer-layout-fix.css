@@ -1,0 +1,95 @@
+/* 2-Row Layout: Track info on top, controls on bottom */
+
+.mini-player-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: var(--spacing-md) var(--spacing-lg);
+    display: flex !important;
+    align-items: center;
+    gap: var(--spacing-lg);
+    box-sizing: border-box;
+}
+
+/* Right side: 2 rows */
+.mini-player-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    min-width: 0;
+}
+
+/* Row 1: Track info */
+.mini-player-info {
+    min-width: 0;
+}
+
+/* Row 2: Controls row - single line */
+.mini-player-controls-row {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    flex-wrap: nowrap;
+}
+
+/* Progress section - flexible to fill available space */
+.mini-player-progress-section {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    flex: 1 1 auto;
+    min-width: 150px;
+}
+
+/* Controls - compact */
+.mini-player-controls {
+    display: flex;
+    gap: var(--spacing-sm);
+    align-items: center;
+    flex-shrink: 0;
+}
+
+/* Volume section - compact */
+.mini-player-volume-section {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    flex-shrink: 0;
+}
+
+.mini-player-volume-section .volume-bar {
+    width: 100px;
+}
+
+/* Quality control - compact */
+.quality-control {
+    flex-shrink: 0;
+}
+
+/* Mobile responsive */
+@media (max-width: 1024px) {
+    .mini-player-controls-row {
+        gap: var(--spacing-sm);
+    }
+
+    .mini-player-volume-section>.volume-icon,
+    .mini-player-volume-section>.volume-bar {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .mini-player-content {
+        flex-direction: row;
+        align-items: center;
+        gap: var(--spacing-md);
+    }
+
+    .mini-player-right {
+        width: 100%;
+    }
+
+    .mini-player-controls-row {
+        flex-wrap: wrap;
+    }
+}

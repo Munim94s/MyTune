@@ -1,0 +1,185 @@
+/* Window Controls */
+.mini-player-window-controls {
+    display: flex;
+    gap: var(--spacing-xs);
+    align-items: center;
+}
+
+.window-control-btn {
+    width: 32px !important;
+    height: 32px !important;
+    opacity: 0.7;
+    transition: all var(--transition-fast);
+}
+
+.window-control-btn:hover {
+    opacity: 1;
+    background: var(--bg-tertiary) !important;
+}
+
+/* Fullscreen Cover Overlay */
+.fullscreen-cover-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding-bottom: 150px;
+    /* Space for mini-player controls */
+    transition: background 0.5s ease;
+    overflow: hidden;
+    will-change: transform, opacity;
+}
+
+.fullscreen-cover-overlay img {
+    width: 70vh;
+    height: 70vh;
+    object-fit: cover;
+    border-radius: var(--border-radius-lg);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+/* Close button for fullscreen cover */
+.fullscreen-cover-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: transparent;
+    backdrop-filter: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10001;
+}
+
+.fullscreen-cover-close:hover {
+    transform: scale(1.1);
+    opacity: 0.8;
+}
+
+/* Mini-player overlay in fullscreen */
+.fullscreen-mini-player {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.95), transparent);
+    padding: 60px 40px 30px;
+    z-index: 10000;
+}
+
+.fullscreen-mini-player .mini-player-content {
+    max-width: 100%;
+    padding: 0;
+}
+
+.fullscreen-mini-player .mini-player-right {
+    width: 100%;
+}
+
+/* Mobile Fullscreen Layout */
+@media (max-width: 768px) {
+    .fullscreen-cover-overlay {
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: 60px 20px 20px;
+        padding-bottom: 0;
+    }
+
+    .fullscreen-cover-overlay img {
+        width: 85vw;
+        height: 85vw;
+        max-width: 400px;
+        max-height: 400px;
+        margin-top: 40px;
+    }
+
+    /* Mobile fullscreen mini-player */
+    .fullscreen-mini-player {
+        position: relative;
+        padding: 30px 20px 100px;
+        background: transparent;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+
+    .fullscreen-mini-player .mini-player-content {
+        padding: var(--spacing-lg);
+    }
+
+    .fullscreen-mini-player .mini-player-right {
+        gap: var(--spacing-lg);
+    }
+
+    .fullscreen-mini-player .mini-player-info {
+        text-align: center;
+        margin-bottom: var(--spacing-md);
+    }
+
+    .fullscreen-mini-player .mini-player-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .fullscreen-mini-player .mini-player-artist {
+        font-size: 1rem;
+        opacity: 0.8;
+    }
+
+    .fullscreen-mini-player .mini-player-controls-row {
+        flex-direction: column;
+        gap: var(--spacing-lg);
+    }
+
+    .fullscreen-mini-player .mini-player-progress-section {
+        width: 100%;
+        max-width: 100%;
+        order: 1;
+    }
+
+    .fullscreen-mini-player .mini-player-controls {
+        order: 2;
+        justify-content: center;
+        gap: var(--spacing-lg);
+    }
+
+    .fullscreen-mini-player .mini-player-btn {
+        width: 50px;
+        height: 50px;
+    }
+
+    .fullscreen-mini-player .mini-player-btn-play {
+        width: 70px;
+        height: 70px;
+    }
+
+    .fullscreen-mini-player .mini-player-volume-section {
+        order: 3;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .fullscreen-mini-player .quality-control {
+        order: 4;
+        display: flex;
+        justify-content: center;
+    }
+
+    .fullscreen-mini-player .mini-player-time {
+        font-size: 0.7rem;
+    }
+}

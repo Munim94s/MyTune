@@ -1,0 +1,229 @@
+/* Mobile Fullscreen UI - Spotify Style */
+
+/* Mobile fullscreen layout */
+@media (max-width: 768px) {
+    .fullscreen-cover-overlay {
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: 0;
+        padding-top: 15px;
+    }
+
+    /* Swipeable area container */
+    .fullscreen-swipeable-area {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        touch-action: pan-y;
+        user-select: none;
+        -webkit-user-select: none;
+        cursor: grab;
+    }
+
+    .fullscreen-swipeable-area:active {
+        cursor: grabbing;
+    }
+
+    /* Swipe indicator */
+    .fullscreen-swipe-indicator {
+        width: 35px;
+        height: 3px;
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 2px;
+        margin: 0 auto 12px;
+        cursor: grab;
+    }
+
+    .fullscreen-swipe-indicator:active {
+        cursor: grabbing;
+    }
+
+    /* Album cover - 90% of viewport width */
+    .fullscreen-cover-overlay img {
+        width: min(90vw, 500px);
+        height: min(90vw, 500px);
+        object-fit: cover;
+        margin-bottom: 6px;
+        flex-shrink: 0;
+        transform: scale(var(--img-scale, 1));
+    }
+
+    /* Close button - top left on mobile */
+    .fullscreen-cover-close {
+        display: none !important;
+        /* Hide on mobile - use swipe instead */
+    }
+
+    /* Mobile fullscreen mini-player - minimal spacing */
+    .fullscreen-mini-player {
+        position: relative;
+        bottom: auto;
+        padding: 0 15px 0;
+        background: transparent;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 0;
+    }
+
+    .fullscreen-mini-player .mini-player-content {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .fullscreen-mini-player .mini-player-right {
+        width: 90vw;
+        max-width: 90vw;
+    }
+
+    /* Track info - minimal */
+    .fullscreen-mini-player .mini-player-info {
+        text-align: center;
+        margin-bottom: 1px;
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .fullscreen-mini-player .mini-player-title {
+        font-size: clamp(0.95rem, 3.2vw, 1.2rem);
+        font-weight: 700;
+        margin-bottom: 3px;
+        line-height: 1.1;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 100%;
+    }
+
+    .fullscreen-mini-player .mini-player-artist {
+        font-size: clamp(0.8rem, 2.3vw, 0.95rem);
+        opacity: 0.8;
+        line-height: 1.1;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 100%;
+    }
+
+    /* Controls row - minimal gap */
+    .fullscreen-mini-player .mini-player-controls-row {
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    /* Progress section - compact */
+    .fullscreen-mini-player .mini-player-progress-section {
+        width: 100%;
+        max-width: 100%;
+        order: 1;
+    }
+
+    .fullscreen-mini-player .mini-player-progress-bar {
+        height: 5px;
+        width: 90vw;
+    }
+
+    .fullscreen-mini-player .mini-player-progress-fill::after {
+        width: 12px;
+        height: 12px;
+        right: -6px;
+    }
+
+    .fullscreen-mini-player .mini-player-time {
+        font-size: 0.7rem;
+        min-width: 35px;
+    }
+
+    /* Playback controls - smaller for S8 */
+    .fullscreen-mini-player .mini-player-controls {
+        order: 2;
+        justify-content: center;
+        gap: clamp(12px, 5vw, 20px);
+        margin: 2px 0;
+    }
+
+    .fullscreen-mini-player .mini-player-btn {
+        width: clamp(42px, 9vw, 52px);
+        height: clamp(42px, 9vw, 52px);
+    }
+
+    .fullscreen-mini-player .mini-player-btn-play {
+        width: clamp(56px, 13vw, 66px);
+        height: clamp(56px, 13vw, 66px);
+    }
+
+    .fullscreen-mini-player .mini-player-btn svg {
+        width: clamp(18px, 4vw, 24px);
+        height: clamp(18px, 4vw, 24px);
+    }
+
+    .fullscreen-mini-player .mini-player-btn-play svg {
+        width: clamp(26px, 6vw, 32px);
+        height: clamp(26px, 6vw, 32px);
+    }
+
+    /* Volume and quality - compact */
+    .fullscreen-mini-player .mini-player-volume-section {
+        order: 3;
+        justify-content: center;
+    }
+
+    .fullscreen-mini-player .quality-control {
+        order: 4;
+        display: flex;
+        justify-content: center;
+    }
+
+    /* Quality menu - bottom sheet style */
+    .fullscreen-mini-player .quality-menu {
+        bottom: 55px;
+        left: 50%;
+        transform: translateX(-50%);
+        right: auto;
+        min-width: 180px;
+    }
+}
+
+/* Extra small devices */
+@media (max-width: 375px) {
+    .fullscreen-cover-overlay img {
+        width: min(90vw, 350px);
+        height: min(90vw, 350px);
+        margin-bottom: 15px;
+    }
+
+    .fullscreen-mini-player {
+        padding: 0 20px 25px;
+    }
+
+    .fullscreen-mini-player .mini-player-content {
+        gap: 15px;
+    }
+
+    .fullscreen-mini-player .mini-player-controls-row {
+        gap: 15px;
+    }
+}
+
+/* Landscape mobile */
+@media (max-width: 768px) and (max-height: 500px) {
+    .fullscreen-cover-overlay {
+        flex-direction: row;
+        padding: 20px;
+        align-items: center;
+    }
+
+    .fullscreen-cover-overlay img {
+        width: 40vh;
+        height: 40vh;
+        margin-right: 20px;
+        margin-bottom: 0;
+    }
+
+    .fullscreen-mini-player {
+        flex: 1;
+        padding: 0 20px;
+    }
+}

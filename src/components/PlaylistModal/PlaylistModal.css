@@ -1,0 +1,293 @@
+.playlist-modal-wrapper {
+    width: 100%;
+    /* GlobalModal container handles the width constraint usually, 
+       but we can ensure it fills */
+    display: flex;
+    flex-direction: column;
+    max-height: 70vh;
+    /* Limit height for list scrolling */
+}
+
+/* Header */
+.playlist-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: var(--spacing-md);
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: var(--spacing-md);
+}
+
+.playlist-modal-header h2 {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.playlist-modal-close-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.playlist-modal-close-btn:hover {
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+}
+
+/* Body */
+.playlist-modal-body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    overflow: hidden;
+    /* For inner scroll */
+}
+
+/* Track Info */
+.playlist-track-info {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    background: var(--bg-tertiary);
+    border-radius: var(--border-radius-md);
+    border: 1px solid var(--border-color);
+}
+
+.playlist-track-cover {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--border-radius-sm);
+    object-fit: cover;
+}
+
+.playlist-track-details {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    overflow: hidden;
+}
+
+.playlist-track-title {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.playlist-track-artist {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Search */
+.playlist-search-container {
+    position: relative;
+}
+
+.playlist-search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-tertiary);
+    pointer-events: none;
+}
+
+.playlist-search-input {
+    width: 100%;
+    padding: 10px 12px 10px 38px;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    transition: all 0.2s;
+}
+
+.playlist-search-input:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: var(--bg-secondary);
+}
+
+/* List */
+.playlist-list-container {
+    overflow-y: auto;
+    max-height: 250px;
+    padding-right: 4px;
+    /* Space for scrollbar */
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.playlist-list-container::-webkit-scrollbar {
+    width: 4px;
+}
+
+.playlist-list-container::-webkit-scrollbar-thumb {
+    background: var(--text-tertiary);
+    border-radius: 4px;
+}
+
+.playlist-empty-state {
+    text-align: center;
+    padding: var(--spacing-lg);
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* List Item */
+.playlist-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: var(--border-radius-md);
+    cursor: pointer;
+    transition: all 0.2s;
+    width: 100%;
+    text-align: left;
+    color: var(--text-primary);
+}
+
+.playlist-item:hover:not(.added) {
+    background: var(--bg-tertiary);
+}
+
+.playlist-item.added {
+    background: rgba(16, 185, 129, 0.1);
+    border-color: #10b981;
+}
+
+.playlist-item-left {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.playlist-item-icon {
+    width: 32px;
+    height: 32px;
+    background: var(--bg-secondary);
+    border-radius: var(--border-radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+}
+
+.playlist-item-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.playlist-item-name {
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.playlist-item-count {
+    font-size: 0.8rem;
+    color: var(--text-tertiary);
+}
+
+.playlist-item-check {
+    color: #10b981;
+    animation: scaleIn 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .playlist-modal-wrapper {
+        max-height: 85vh;
+        width: 90vw;
+        margin: 0 auto;
+    }
+
+    .playlist-modal-header {
+        padding-bottom: var(--spacing-sm);
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .playlist-modal-header h2 {
+        font-size: 1.1rem;
+    }
+
+    .playlist-section-label {
+        font-size: 0.85rem;
+    }
+
+    /* Track Info Compact Mode */
+    .playlist-track-info {
+        padding: var(--spacing-sm);
+        gap: var(--spacing-sm);
+    }
+
+    .playlist-track-cover {
+        width: 40px;
+        height: 40px;
+    }
+
+    .playlist-track-title {
+        font-size: 0.9rem;
+    }
+
+    .playlist-track-artist {
+        font-size: 0.8rem;
+    }
+
+    /* Search Input: Prevent Zoom on iOS */
+    .playlist-search-input {
+        font-size: 16px;
+        padding-top: 12px;
+        padding-bottom: 12px;
+    }
+
+    /* List Items */
+    .playlist-item {
+        padding: var(--spacing-md) var(--spacing-sm);
+    }
+
+    .playlist-item-icon {
+        width: 36px;
+        height: 36px;
+    }
+
+    .playlist-item-name {
+        font-size: 1rem;
+    }
+}

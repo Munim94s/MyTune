@@ -1,0 +1,133 @@
+.search-page {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.search-form {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-2xl);
+}
+
+.search-btn {
+    min-width: 52px;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(225, 61, 61, 0.4);
+}
+
+.search-text {
+    display: none;
+}
+
+.search-btn:hover:not(:disabled) {
+    box-shadow: 0 6px 20px rgba(225, 61, 61, 0.6);
+    transform: translateY(-2px);
+}
+
+.search-input-container {
+    flex: 1;
+    position: relative;
+}
+
+.search-icon {
+    position: absolute;
+    left: var(--spacing-md);
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-tertiary);
+    pointer-events: none;
+}
+
+.search-input {
+    padding-left: 48px;
+    font-size: 1rem;
+}
+
+.add-by-url-section {
+    background: var(--bg-glass);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-xl);
+    margin-bottom: var(--spacing-2xl);
+}
+
+.add-by-url-section h3 {
+    margin-bottom: var(--spacing-md);
+    font-size: 1.25rem;
+}
+
+.url-form {
+    display: flex;
+    gap: var(--spacing-md);
+}
+
+.error-message {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid var(--error);
+    color: var(--error);
+    padding: var(--spacing-md) var(--spacing-lg);
+    border-radius: var(--border-radius-md);
+    margin-bottom: var(--spacing-lg);
+    text-align: center;
+}
+
+.loading-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-2xl);
+    gap: var(--spacing-md);
+    color: var(--text-secondary);
+}
+
+.search-results h2 {
+    margin-bottom: var(--spacing-xl);
+    font-size: 1.75rem;
+}
+
+
+
+/* Hide scrollbar on mobile while keeping scroll functionality */
+@media (max-width: 768px) {
+    body {
+        -ms-overflow-style: none;
+        /* IE and Edge */
+        scrollbar-width: none;
+        /* Firefox */
+    }
+
+    body::-webkit-scrollbar {
+        display: none;
+        /* Chrome, Safari, Opera */
+    }
+
+    .main-content {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    .main-content::-webkit-scrollbar {
+        display: none;
+    }
+
+    .search-form {
+        flex-direction: row;
+    }
+
+    .url-form {
+        flex-direction: column;
+    }
+
+    /* search-form specific overrides removed as global styles now handle it */
+
+    .url-form button {
+        width: 100%;
+    }
+}

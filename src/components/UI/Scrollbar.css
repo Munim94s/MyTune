@@ -1,0 +1,42 @@
+.c-scrollbar {
+    position: fixed;
+    right: 4px;
+    top: 4px;
+    bottom: 4px;
+    width: 8px;
+    z-index: 9999;
+    height: calc(100vh - 8px);
+    pointer-events: none;
+    /* Let clicks pass through track */
+    transition: opacity 0.3s ease;
+}
+
+.c-scrollbar:hover,
+.c-scrollbar.is-hovered {
+    opacity: 1;
+}
+
+.c-scrollbar_thumb {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 6px;
+    height: 100px;
+    /* Fixed height or dynamic based on content ratio */
+    background-color: var(--text-tertiary);
+    border-radius: 10px;
+    cursor: grab;
+    pointer-events: auto;
+    /* Re-enable events for thumb */
+    opacity: 0.5;
+    transition: width 0.3s ease, background-color 0.3s ease, opacity 0.3s ease;
+}
+
+.c-scrollbar:hover .c-scrollbar_thumb {
+    width: 8px;
+    opacity: 0.8;
+}
+
+.c-scrollbar_thumb:hover {
+    background-color: var(--primary);
+}

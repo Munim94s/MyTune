@@ -1,0 +1,123 @@
+.create-playlist-modal {
+    max-width: 500px;
+    width: 100%;
+    /* Prevent conflict with global stagger animations */
+    animation: none !important;
+    opacity: 1 !important;
+    /* Let GSAP handle opacity */
+    transform: none !important;
+    /* Let GSAP handle transform */
+}
+
+/* Ensure overlay also doesn't inherit animations and sits on top */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    /* Max z-index */
+    animation: none !important;
+    backdrop-filter: blur(5px);
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--spacing-lg);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.modal-header h2 {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.modal-close-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-fast);
+}
+
+.modal-close-btn:hover {
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+}
+
+.modal-body {
+    padding: var(--spacing-xl);
+}
+
+.modal-body label {
+    display: block;
+    margin-bottom: var(--spacing-sm);
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.modal-body input {
+    width: 100%;
+    padding: var(--spacing-md);
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    color: var(--text-primary);
+    font-size: 1rem;
+    transition: all var(--transition-fast);
+}
+
+.modal-body input:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: var(--bg-secondary);
+}
+
+.char-count {
+    text-align: right;
+    font-size: 0.75rem;
+    color: var(--text-tertiary);
+    margin-top: var(--spacing-xs);
+}
+
+.modal-footer {
+    display: flex;
+    gap: var(--spacing-md);
+    padding: var(--spacing-lg);
+    border-top: 1px solid var(--border-color);
+    justify-content: flex-end;
+}
+
+.modal-footer .btn {
+    min-width: 120px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .create-playlist-modal {
+        margin: var(--spacing-md);
+    }
+
+    .modal-footer {
+        flex-direction: column-reverse;
+    }
+
+    .modal-footer .btn {
+        width: 100%;
+    }
+}

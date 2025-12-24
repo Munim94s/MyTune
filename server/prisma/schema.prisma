@@ -1,0 +1,88 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// The master table for all tracks (Metadata)
+model Song {
+  videoId     String   @id
+  title       String
+  artist      String
+  thumbnail   String
+  customCover String?
+  duration    Int
+  
+  // Relations
+  libraryEntries Library[]
+  historyEntries History[]
+  playlists      PlaylistTrack[]
+}
+
+model User {
+  id                      Int      @id @default(autoincrement())
+  email                   String   @unique
+  password                String?
+  name                    String?
+  googleId                String?  @unique
+  provider                String   @default("local") // "local" or "google"
+  isVerified              Boolean  @default(false)
+  verificationToken       String?
+  verificationTokenExpiry DateTime?
+  createdAt               DateTime @default(now())
+
+  // Relations
+  playlists Playlist[]
+  library   Library[]
+  history   History[]
+}
+
+// User's Saved Library
+model Library {
+  userId  Int
+  videoId String
+  addedAt DateTime @default(now())
+  
+  user    User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  song    Song     @relation(fields: [videoId], references: [videoId], onDelete: Cascade)
+
+  @@id([userId, videoId])
+}
+
+// User's Listening History (Last played unique items)
+model History {
+  userId   Int
+  videoId  String
+  playedAt DateTime @default(now())
+  
+  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  song     Song     @relation(fields: [videoId], references: [videoId], onDelete: Cascade)
+
+  @@id([userId, videoId])
+}
+
+model Playlist {
+  id        Int             @id @default(autoincrement())
+  name      String
+  userId    Int
+  createdAt DateTime        @default(now())
+  
+  owner     User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  tracks    PlaylistTrack[]
+}
+
+model PlaylistTrack {
+  id         Int      @id @default(autoincrement())
+  playlistId Int
+  videoId    String
+  addedAt    DateTime @default(now())
+  order      Int      @default(0) // For custom ordering
+  
+  playlist   Playlist @relation(fields: [playlistId], references: [id], onDelete: Cascade)
+  song       Song     @relation(fields: [videoId], references: [videoId], onDelete: Cascade)
+
+  @@unique([playlistId, videoId])
+}
